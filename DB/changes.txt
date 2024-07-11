@@ -1,0 +1,13 @@
+blood group select
+
+insurance rs 12 yes/no
+insurance rs 330 yes/no
+nominee
+bank account
+
+
+in both labour and truck
+
+in truck 
+HIV Test yes/no
+fitness Test yes/no

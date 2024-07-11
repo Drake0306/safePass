@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Kruti Dev 010';
+    src: url('KrutiDev010.woff2') format('woff2'),
+        url('KrutiDev010.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

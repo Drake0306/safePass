@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Language" content="en">
+
+    <title>E-SafePass System</title>
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
+    <meta name="description" content="This is an example dashboard created using build-in elements and components.">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <!--
+    =========================================================
+    * ArchitectUI HTML Theme Dashboard - v1.0.0
+    =========================================================
+    * Product Page: https://dashboardpack.com
+    * Copyright 2019 DashboardPack (https://dashboardpack.com)
+    * Licensed under MIT (https://github.com/DashboardPack/architectui-html-theme-free/blob/master/LICENSE)
+    =========================================================
+    * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+    -->
+    @include('script&css')
+    <style>
+        div.app-container.app-theme-white.body-tabs-shadow.fixed-sidebar.fixed-header {
+            /* font-size: 12px; */
+        }
+
+        body {
+            background: #eee
+        }
+
+        .form-control {
+            border-radius: 0;
+            box-shadow: none;
+            border-color: #d2d6de
+        }
+
+        .select2-hidden-accessible {
+            border: 0 !important;
+            clip: rect(0 0 0 0) !important;
+            height: 1px !important;
+            margin: -1px !important;
+            overflow: hidden !important;
+            padding: 0 !important;
+            position: absolute !important;
+            width: 1px !important
+        }
+
+        .form-control {
+            display: block;
+            width: 100%;
+            height: 34px;
+            padding: 6px 12px;
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #555;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+            -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+            -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+            transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s
+        }
+
+        .select2-container--default .select2-selection--single,
+        .select2-selection .select2-selection--single {
+            border: 1px solid #d2d6de;
+            border-radius: 0;
+            padding: 6px 12px;
+            height: 34px
+        }
+
+        .select2-container--default .select2-selection--single {
+            background-color: #fff;
+            border: 1px solid #aaa;
+            border-radius: 4px
+        }
+
+        .select2-container .select2-selection--single {
+            box-sizing: border-box;
+            cursor: pointer;
+            display: block;
+            height: 28px;
+            user-select: none;
+            -webkit-user-select: none
+        }
+
+        .select2-container .select2-selection--single .select2-selection__rendered {
+            padding-right: 10px
+        }
+
+        .select2-container .select2-selection--single .select2-selection__rendered {
+            padding-left: 0;
+            padding-right: 0;
+            height: auto;
+            margin-top: -3px
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            color: #444;
+            line-height: 28px
+        }
+
+        .select2-container--default .select2-selection--single,
+        .select2-selection .select2-selection--single {
+            border: 1px solid #d2d6de;
+            border-radius: 0 !important;
+            padding: 6px 12px;
+            height: 40px !important
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__arrow {
+            height: 26px;
+            position: absolute;
+            top: 6px !important;
+            right: 1px;
+            width: 20px
+        }
+    </style>
+</head>
+
+<body>
+@include('header')
+        <div class="app-main">
+        @include('sidebar')
+            <div class="app-main__outer">
+                <div class="app-main__inner">
+
+                    <div class="row">
+                            <div class="col-md-12 col-lg-12">
+                                <div class="mb-3 card">
+
+                                    <div class="card-header-tab card-header-tab-animation card-header" style="background-color: #F79646">
+                                        <div class="card-header-title text-light">
+                                            <i class="header-icon lnr-apartment icon-gradient bg-love-kiss"> </i>
+                                            ADD BLACKLIST
+                                        </div>
+
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="tab-content">
+                                            <form action="{{url('/blacklist/add')}}" method="post">
+                                            @csrf
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <label for="exampleDataList" class="form-label">Aadhar Number</label>
+                                                        {{-- <input class="form-control" name="aadhar_no" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
+                                                        <datalist id="datalistOptions">
+                                                        @foreach($truck_data as $item)
+                                                        @if($item['adhar_no'])
+                                                        <option value="{{$item['adhar_no']}}|TRUCK|{{$item['full_name']}}" >
+                                                        @endif
+                                                        @endforeach
+                                                        @foreach($labour_data as $item)
+                                                        @if($item['adhar_no'])
+                                                        <option value="{{$item['adhar_no']}}|LABOUR|{{$item['full_name']}}" >
+                                                        @endif
+                                                        @endforeach
+                                                        </datalist> --}}
+
+                                                        <select class="form-control select2 select2-hidden-accessible" name="aadhar_no" style="width: 100%;" tabindex="-1" aria-hidden="true" required>
+                                                            <option selected="selected">SELECT</option>
+                                                            @foreach($truck_data as $item)
+                                                                @if($item['adhar_no'])
+                                                                    <option data-tokens="{{$item['adhar_no']}}|TRUCK|{{$item['full_name']}}" >{{$item['adhar_no']}}, {{$item['full_name']}}, TRUCK</option>
+                                                                @endif
+                                                            @endforeach
+                                                            @foreach($labour_data as $item)
+                                                                @if($item['adhar_no'])
+                                                                    <option data-tokens="{{$item['adhar_no']}}|LABOUR|{{$item['full_name']}}" >{{$item['adhar_no']}}, {{$item['full_name']}}, LABOUR</option>
+                                                                @endif
+                                                            @endforeach
+                                                        </select>
+
+                                                    </div>
+                                                 
+                                                    <div class="col-md-3">
+                                                        <button type="submit" class="btn btn-outline-danger"
+                                                            style="width:150px;height:40px;margin-top:30px"> <i class="fa fa-plus-circle" aria-hidden="true"></i> &nbsp; BLACKLIST</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                             
+                                <div class="col-md-12">
+
+                                    <div class="card-header-tab card-header-tab-animation card-header">
+                                        <div class="card-header-title">
+                                            <i class="header-icon lnr-apartment icon-gradient bg-love-kiss"> </i>
+                                            LIST
+                                        </div>
+
+                                    </div>
+
+                                    <div class="tab-content">
+                                        <div class="row">
+                                            <div class="col-md-12">
+
+                                                <div class="main-card mb-3 card">
+                                                    <div class="card-body">
+                                                    <div class="tab-content">
+                                                            <form action="{{url('/blacklist/search')}}" method="get">
+                                                                <div class="row">
+                                                                    <div class="col-md-10">
+                                                                        <div class="form-group">
+                                                                            <input type="text" class="form-control" name="search" id=""
+                                                                                aria-describedby="helpId" placeholder="Aadhar Number Search">
+                                                                        </div>
+
+                                                                    </div>
+                                                                    
+                                                                    <div class="col-md-2">
+                                                                        <button type="submit" class="btn btn-outline-primary"
+                                                                            style="width:100%;height:40px;"><i class="fa fa-search"
+                                                                                aria-hidden="true"></i>&nbsp; Search</button>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                        <br>
+                                                        <table class="mb-0 table table-borderless">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>#</th>
+                                                                    <th style="text-align: center">Action</th>
+                                                                    <th>Photo</th>
+                                                                    <th>Type</th>
+                                                                    <th>BlackList Aadhar Number</th>
+                                                                    <th>Location Name</th>
+                                                                    </th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody style="font-size:12px;">
+                                                                <?php $c = 1; ?>
+                                                                @foreach($blacklistList as $item)
+                                                                <?php //echo $item->party_name;?>
+                                                                <tr>
+                                                                    <th scope="row">{{ $c++ }}</th>
+                                                                    <td style="text-align: center" >
+                                                                    <a href="{{url('/revert/blacklist/'.$item->id)}}" 
+                                                                       onclick="return confirm('Are you sure?')" 
+                                                                       title="Delete Consignment"> 
+                                                                       <i class="fa fa-trash text-danger" style="font-size: 20px;" aria-hidden="true"></i>
+                                                                    </a> 
+                                                                 </td>
+                                                                 <th scope="row">
+                                                                    @if($item->truck_pic)
+                                                                        <img width="50" height="50" class="rounded-circle" src="{{url('../public/files/'.$item->truck_pic)}}" alt="">
+                                                                    @endif
+                                                                    @if($item->labour_pic)
+                                                                        <img width="50" height="50" class="rounded-circle" src="{{url('../public/files/'.$item->labour_pic)}}" alt="">
+                                                                    @endif
+                                                                    @if(!$item->labour_pic && !$item->truck_pic)
+                                                                        <img width="50" height="50" class="rounded-circle" alt="Image" src="{{url('../public/files/1642441947.png')}}" alt="">
+                                                                    @endif
+                                                                </th>
+                                                                 <th scope="row">{{ $item->type }}</th>
+                                                                    <th scope="row"> <lable class="text-primary" > <b style="letter-spacing: 1px" >{{ $item->aadhar }}</b> </lable> </th>
+                                                                    <th scope="row">{{ @$company_master->location_name }}</th>
+                                                                </tr>
+                                                                @endforeach
+                                                            </tbody>
+                                                        </table>
+                                                        @if($value ?? '' == 1)
+                                                        {{@$truck_data->links()}}
+                                                        @endif
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                    </div>
+                    <!-- <div class="app-wrapper-footer">
+                        <div class="app-footer">
+                            <div class="app-footer__inner">
+                                <div class="app-footer-left">
+                                    <ul class="nav">
+                                        <li class="nav-item">
+                                            <a href="javascript:void(0);" class="nav-link">
+                                                Footer Link 1
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="javascript:void(0);" class="nav-link">
+                                                Footer Link 2
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="app-footer-right">
+                                    <ul class="nav">
+                                        <li class="nav-item">
+                                            <a href="javascript:void(0);" class="nav-link">
+                                                Footer Link 3
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="javascript:void(0);" class="nav-link">
+                                                <div class="badge badge-success mr-1 ml-0">
+                                                    <small>NEW</small>
+                                                </div>
+                                                Footer Link 4
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+                <!--<script src="http://maps.google.com/maps/api/js?sensor=true"></script>-->
+            </div>
+        </div>
+        
+        
+    </body>
+    <script>
+        $(document).ready(function() {
+            $('.select2').select2({
+                closeOnSelect: false
+            });
+        });
+    </script>
+
+</html>
